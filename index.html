@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Form</title>
+<link rel="stylesheet" href="script.js">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  h2 {
+    text-align: center;
+  }
+  form {
+    border: 2px solid #ccc;
+    padding: 15px;
+    width: 300px;
+    margin: 0 auto 20px;
+    background-color: #f9f9f9;
+  }
+  form input, form select {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0 10px;
+    box-sizing: border-box;
+  }
+  form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #80ffe0;
+    border: none;
+    cursor: pointer;
+  }
+  table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+  table, th, td {
+    border: 1px solid #000;
+  }
+  th, td {
+    padding: 8px;
+    text-align: center;
+  }
+  .delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<h2>STUDENT FORM</h2>
+
+<form id="studentForm">
+  <label>Name</label>
+  <input type="text" id="name" required>
+  
+  <label>Age</label>
+  <input type="number" id="age" required>
+  
+  <label>Gender</label><br>
+  <input type="radio" name="gender" value="Male" checked> Male 
+  <input type="radio" name="gender" value="Female" checked> FeMale <br> <br>
+  
+  
+  <label>Course</label>
+  <select id="course">
+    <option value="PYTHON">PYTHON</option>
+    <option value="JavaScript">JavaScript</option>
+    <option value="HTML/CSS">HTML/CSS</option>
+  </select>
+  
+  <label>E-mail</label>
+  <input type="email" id="email" required>
+  
+  <button type="submit">Save</button>
+</form>
+
+<table id="studentTable">
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>AGE</th>
+      <th>COURSE</th>
+      <th>GENDER</th>
+      <th>EMAIL</th>
+      <th>ACTION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ruthra</td>
+      <td>22</td>
+      <td>JavaScript</td>
+      <td>Female</td>
+      <td>RuthradeviS@gmail.com</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
