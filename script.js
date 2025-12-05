@@ -1,42 +1,34 @@
-    
-const form = document.getElementById("studentForm");
-const table = document.getElementById("studentTable").getElementsByTagName("tbody")[0];
+document.getElementById("studentForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-// Function to delete a row
+    const name = document.getElementById("name").value.trim();
+    const age = document.getElementById("age").value.trim();
+    const course = document.getElementById("course").value;
+    const email = document.getElementById("email").value.trim();
+    const gender = document.querySelector('input[name="gender"]:checked').value;
 
-function deleteRow(event) 
-{
-  const btn = event.target;
-  const row = btn.parentNode.parentNode;
-  row.remove()
-}
+    const tableBody = document.querySelector("#studentTable tbody");
 
-// Handle form submission
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${name}</td>
+        <td>${age}</td>
+        <td>${course}</td>
+        <td>${gender}</td>
+        <td>${email}</td>
+        <td><button class="delete-btn">Delete</button></td>
+    `;
 
-form.addEventListener("submit", function(event) {
-  event.preventDefault()
-  
-  const name = document.getElementById("name").value;
-  const age = document.getElementById("age").value;
-  const gender = document.querySelector('input[name="gender"]:checked').value;
-  const course = document.getElementById("course").value;
-  const email = document.getElementById("email").value;
-  
-  const newRow = table.insertRow()
-  
-  newRow.insertCell(0).textContent = name;
-  newRow.insertCell(1).textContent = age;
-  newRow.insertCell(2).textContent = course;
-  newRow.insertCell(3).textContent = gender;
-  newRow.insertCell(4).textContent = email;
-  
-  const actionCell = newRow.insertCell(5);
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Delete";
-  deleteBtn.className = "delete-btn";
-  deleteBtn.addEventListener("click", deleteRow);
-  
-  actionCell.appendChild(deleteBtn)
-  
-  form.reset(); // Clear form fields
-})
+    tableBody.appendChild(row);
+
+    // Reset form
+    document.getElementById("studentForm").reset();
+    document.querySelector('input[name="gender"][value="Male"]').checked = true;
+});
+
+// Delete button functionality
+document.querySelector("#studentTable").addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete-btn")) {
+        e.target.closest("tr").remove();
+    }
+});
